@@ -82,57 +82,50 @@ class Logger implements ILogger
         return level >= getEffectiveLevel();
     }
 
-    public function debug(message:String, arguments:Dynamic=null,
-                          ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function debug(message:String, arguments:Dynamic=null,
+                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.DEBUG))
-            _log(Level.DEBUG, message, arguments, stack, pos);
+        log(Level.DEBUG, message, arguments, stack, pos);
     }
 
-    public function info(message:String, arguments:Dynamic=null,
-                         ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function info(message:String, arguments:Dynamic=null,
+                                ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.INFO))
-            _log(Level.INFO, message, arguments, stack, pos);
+        log(Level.INFO, message, arguments, stack, pos);
     }
 
-    public function warning(message:String, arguments:Dynamic=null,
-                            ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function warning(message:String, arguments:Dynamic=null,
+                                   ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.WARNING))
-            _log(Level.WARNING, message, arguments, stack, pos);
+        log(Level.WARNING, message, arguments, stack, pos);
     }
 
-    public function warn(message:String, arguments:Dynamic=null,
-                         ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function warn(message:String, arguments:Dynamic=null,
+                                ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.WARNING))
-            _log(Level.WARNING, message, arguments, stack, pos);
+        log(Level.WARNING, message, arguments, stack, pos);
     }
 
-    public function error(message:String, arguments:Dynamic=null,
-                          ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function error(message:String, arguments:Dynamic=null,
+                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.ERROR))
-            _log(Level.ERROR, message, arguments, stack, pos);
+        log(Level.ERROR, message, arguments, stack, pos);
     }
 
-    public function critical(message:String, arguments:Dynamic=null,
-                             ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function critical(message:String, arguments:Dynamic=null,
+                                    ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.CRITICAL))
-            _log(Level.CRITICAL, message, arguments, stack, pos);
+        log(Level.CRITICAL, message, arguments, stack, pos);
     }
 
-    public function fatal(message:String, arguments:Dynamic=null,
-                          ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function fatal(message:String, arguments:Dynamic=null,
+                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
-        if (isEnableFor(Level.CRITICAL))
-            _log(Level.CRITICAL, message, arguments, stack, pos);
+        log(Level.CRITICAL, message, arguments, stack, pos);
     }
 
-    public function log(level:Int, message:String, arguments:Dynamic=null,
-                        ?stack:Array<StackItem>, ?pos:PosInfos):Void
+    public inline function log(level:Int, message:String, arguments:Dynamic=null,
+                               ?stack:Array<StackItem>, ?pos:PosInfos):Void
     {
         if (isEnableFor(level))
             _log(level, message, arguments, stack, pos);
@@ -141,7 +134,7 @@ class Logger implements ILogger
     function _log(level:Int, message:String, arguments:Dynamic,
                   ?stack:Array<StackItem>, ?pos:PosInfos)
     {
-        var record:LogRecord = new LogRecord(name, level, pos.fileName, 
+        var record:LogRecord = new LogRecord(name, level, pos.fileName,
             pos.lineNumber, message, arguments, stack);
         handle(record);
     }
