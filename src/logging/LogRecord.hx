@@ -42,6 +42,7 @@ class LogRecord
         var _arguments:StringMap<Dynamic>;
         if (null == arguments) {
             this.message = message;
+            arguments = new StringMap<Dynamic>();
         } else {
             var template = new Template(message);
             switch (Type.typeof(arguments)) {
