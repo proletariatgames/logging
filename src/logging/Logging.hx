@@ -23,52 +23,52 @@ class Logging
     }
 
     static public inline function info(message:String, arguments:Dynamic=null,
-                                       ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.INFO, message, arguments, checkStack(stack), pos);
+        log(Level.INFO, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function debug(message:String, arguments:Dynamic=null,
-                                        ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.DEBUG, message, arguments, checkStack(stack), pos);
+        log(Level.DEBUG, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function warning(message:String, arguments:Dynamic=null,
-                                          ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.WARNING, message, arguments, checkStack(stack), pos);
+        log(Level.WARNING, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function warn(message:String, arguments:Dynamic=null,
-                                       ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.WARNING, message, arguments, checkStack(stack), pos);
+        log(Level.WARNING, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function error(message:String, arguments:Dynamic=null,
-                                        ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.ERROR, message, arguments, checkStack(stack), pos);
+        log(Level.ERROR, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function critical(message:String, arguments:Dynamic=null,
-                                           ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.CRITICAL, message, arguments, checkStack(stack), pos);
+        log(Level.CRITICAL, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     @:keep
     static public inline function fatal(message:String, arguments:Dynamic=null,
-                                        ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.CRITICAL, message, arguments, checkStack(stack), pos);
+        log(Level.CRITICAL, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public inline function log(level:Int, message:String, arguments:Dynamic=null,
-                                      ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                       #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        getLogger(null).log(level, message, arguments, checkStack(stack), pos);
+        getLogger(null).log(level, message, arguments, #if (!il2cpp) checkStack(stack), #end pos);
     }
 
     static public function getLogger(name:String):ILogger

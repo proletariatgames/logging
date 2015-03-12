@@ -20,28 +20,28 @@ interface ILogger extends IBaseLogger extends IFilterer
     function removeHandler(handler:IHandler):Void;
 
     function debug(message:String, arguments:Dynamic=null,
-                   ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function info(message:String, arguments:Dynamic=null,
-                  ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function warning(message:String, arguments:Dynamic=null,
-                     ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function warn(message:String, arguments:Dynamic=null,
-                  ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function error(message:String, arguments:Dynamic=null,
-                   ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function log(level:Int, message:String, arguments:Dynamic=null,
-                 ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function critical(message:String, arguments:Dynamic=null,
-                      ?stack:Array<StackItem>, ?pos:PosInfos):Void;
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
 
     function fatal(message:String, arguments:Dynamic=null,
-                   ?stack:Array<StackItem>, ?pos:PosInfos):Void;
-    
+                   #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void;
+
     function getChild(suffix:String):ILogger;
 }

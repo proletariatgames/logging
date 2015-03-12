@@ -55,7 +55,7 @@ class Logger implements ILogger
 
     public function removeHandler(handler:IHandler):Void
     {
-        handlers.remove(handler);   
+        handlers.remove(handler);
     }
 
     function getEffectiveLevel()
@@ -64,8 +64,8 @@ class Logger implements ILogger
         while (true) {
             if (null == logger)
                 break;
-                
-            if (0 != logger.level)                
+
+            if (0 != logger.level)
                 return logger.level;
 
             logger = logger.parent;
@@ -83,59 +83,59 @@ class Logger implements ILogger
     }
 
     public inline function debug(message:String, arguments:Dynamic=null,
-                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.DEBUG, message, arguments, stack, pos);
+        log(Level.DEBUG, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function info(message:String, arguments:Dynamic=null,
-                                ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.INFO, message, arguments, stack, pos);
+        log(Level.INFO, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function warning(message:String, arguments:Dynamic=null,
-                                   ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.WARNING, message, arguments, stack, pos);
+        log(Level.WARNING, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function warn(message:String, arguments:Dynamic=null,
-                                ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.WARNING, message, arguments, stack, pos);
+        log(Level.WARNING, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function error(message:String, arguments:Dynamic=null,
-                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.ERROR, message, arguments, stack, pos);
+        log(Level.ERROR, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function critical(message:String, arguments:Dynamic=null,
-                                    ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.CRITICAL, message, arguments, stack, pos);
+        log(Level.CRITICAL, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function fatal(message:String, arguments:Dynamic=null,
-                                 ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
-        log(Level.CRITICAL, message, arguments, stack, pos);
+        log(Level.CRITICAL, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     public inline function log(level:Int, message:String, arguments:Dynamic=null,
-                               ?stack:Array<StackItem>, ?pos:PosInfos):Void
+                                 #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos):Void
     {
         if (isEnableFor(level))
-            _log(level, message, arguments, stack, pos);
+            _log(level, message, arguments, #if (!il2cpp) stack, #end pos);
     }
 
     function _log(level:Int, message:String, arguments:Dynamic,
-                  ?stack:Array<StackItem>, ?pos:PosInfos)
+                  #if (!il2cpp) ?stack:Array<StackItem>, #end ?pos:PosInfos)
     {
         var record:LogRecord = new LogRecord(name, level, pos.fileName,
-            pos.lineNumber, message, arguments, stack);
+            pos.lineNumber, message, arguments #if (!il2cpp), stack #end);
         handle(record);
     }
 
